@@ -153,11 +153,19 @@
 #### Non lab Exercise:
 1. Setup a AWS windows workstation and connect to it.
 
+## Intro To Elastic Beanstalk
 
 
+1. With Elastic Beanstalk, user can deploy, monitor, and scale an application quickly and easily. 
+2. It Let us do the heavy lifting so you can focus on your business.
+3. User can specify the number of machines, type of load balancing and auto scaling.
+4. User can select the technology to be used for the app.
+5. It makes the infra deployment and management very easy.
 
-
-
+#### Exercise 8:
+1. Create a high availability nodeJs app using Elastic Beanstalk, which uses auto scaling and load balancing.
+2. Open it in the Browser.
+3. Terminate the app.
 
 
 
