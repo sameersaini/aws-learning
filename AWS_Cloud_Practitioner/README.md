@@ -1,4 +1,4 @@
-### Intro to Storage Services
+## Intro to Storage Services
 
 1. <b>Simple Storage Service</b> : known as S3. To Store any type of data over the internet. User creates a bucket and upload content to that bucket. Its a flat storage. So, bucket names needs to be unique over the entires AWS accounts. 
 2. <b>AWS Glacier</b>: Used for long term archiving of data and is much cheaper than S3. Also a server less service. Should only be used for archival. Rule can be set in S3 for auto moving data to Glacier
@@ -15,7 +15,7 @@
 5. Delete files from a bucket.
 6. Delete a bucket.
 
-### Intro to Database Services
+## Intro to Database Services
 
 1. <b>Relational Database Service/RDS</b>: Provides fully managed mySql database servers that can be scaled according to the need. Can launch mySql servers or the variations of mysql with mariaDB or amazon’s own mysql service. Microsoft SQL and poster SQL are also available.
 2. <b>Dynamo DB</b>: Is is amazon’s own noSQL DB service. Its a serveless service and you don’t have to worry about the underlying infra.
@@ -31,7 +31,7 @@
 4. Connect to same instance using mysql shell.
 
 
-### Intro to Compute and Networking Services:
+## Intro to Compute and Networking Services:
 
 1. <b>AWS EC2</b>: elastic compute cloud provides virtual servers in the AWS cloud and it provides a large number of options to choose from and configure servers.
 2. <b>AWS EC2 auto scale</b>: allows to dynamically scale EC2 machines. User can Setup load cutoff for when to upgrade and when to downgrade the ec2 machines automatically.
@@ -54,7 +54,7 @@
 4. Login as admin console.
 5. Terminate the server.
 
-### Intro to management services
+## Intro to management services
 1. <b>CloudFormation</b>: Allows user to create a text file to define the infra and use this text file to deploy resources to the AWS cloud.
 2. <b>AWS Service catalog</b>: allows companies to catalog resources that can be deployed on the AWS cloud and in turn allow them to comply with the common governance metrics
 3. <b>AWS cloud watch</b>: monitoring service for AWS resources and applications and can be used to set alarms for a number of events such as billing alarms.
@@ -66,7 +66,7 @@
 #### Exercise_4:
 1. Add a billing alarm using cloud watch.
 
-### Intro to Application Services
+## Intro to Application Services
 1. <b>Step Function</b>: define the steps to be followed for application development
 2. <b>AWS SWF</b>: Simple Workflow Service: Similar to Step Function. User can define the workflow of the app development
 3. <b>SNS</b>: simple pub/sub messaging service. Create a topic-> publish it ->  subscribe-> subscribers receive the notification. Also, used for the sending push messages to mobile devices.
@@ -78,7 +78,7 @@
 #### Exercise_5:
 1. Use SES to send email to a user.
 
-Intro to Analytics and Machine Learning:
+## Intro to Analytics and Machine Learning:
 1. <b>Amazon EMR</b>: Elastic Map Reduce is amazon’s Hadoop framework as a service. Also provide other frameworks to work with such as Hbase, Spark.
 2. <b>Amazon Athena</b>: allows to analyse data stored in S3 bucket using standard SQL statements.
 3. <b>Amazon Elastic Search</b>: fully managed service for elastic.co’s elastic search service, that allows high speed querying and analysis of data stored on AWS.  
@@ -94,7 +94,7 @@ Intro to Analytics and Machine Learning:
 #### Exercise_6:
 1. Use Amazon Recognition to analyse images and videos.
 
-### Intro to Security, Identity & Compliance:
+## Intro to Security, Identity & Compliance:
 
 1. <b>Artifact</b>: Provides access to AWS security and compliance documentation.
 2. <b>Certificate Manager</b>: provides free SSL certs for HTTPS. 
@@ -115,7 +115,7 @@ Intro to Analytics and Machine Learning:
 3. Login with IAM user.
 
 
-### Intro to Developer Tools:
+## Intro to Developer Tools:
 1. <b>Cloud 9</b>: IDE running in the AWS cloud. Allows to deploy code to AWS directly from IDE.
 2. <b>CodeStart</b>: allows to develop and deploy to AWS and can manage the entire CI/CD pipeline. Issue tracking integrated via JIRA.
 3. <b>X-Ray</b>: makes it easy to debug the app and provides insights to the app performance.
@@ -125,27 +125,27 @@ Intro to Analytics and Machine Learning:
 7. <b>AWS CodeDeploy</b>: helps in automatic code deployment to AWS EC2 or AWS Lambda.
 
 
-### Intro to mobile services:
+## Intro to mobile services:
 
 1. <b>AWS mobile hub</b>: creates configuration file for mobile devices regarding the AWS services to be used
 2. <b>AWS Device Farm</b>: app testing service. Allows to test apps on large number of mobile devices.
 3. <b>AWS AppSync</b>: graphQL backEnd for mobile and web applications.
 
-###Intro to Migration Services:
+## Intro to Migration Services:
 
 1. <b>AWS Application Discovery Service</b>: gathers information about enterprises on-premises data centre to help plan migration to AWS
 2. <b>AWS Database Migration Service</b>: helps migration of on-premise database to AWS even to a different database engine.
 3. <b>AWS Server Migration Service</b>: helps automate migration of thousands of on-premise servers to AWS cloud.
 4. <b>AWS SnowBall</b>: refer above in Storage Services.
 
-### Business Productivity and App Streaming:
+## Business Productivity and App Streaming:
 1. <b>Amazon Workdocs</b>: file management service. View and edit files
 2. <b>Amazon WorkMail</b>: fully managed business mail and calendar serve.
 3. <b>Amazon Chime</b>: Video conferencing service
 4. <b>Amazon WorkSpaces</b>: fully managed desktop as a service for windows desktop.
 5. <b>Amazon AppStream</b>: application streaming services. Stream apps from AWS to web browser
 
-### Intro to IOT Services:
+## Intro to IOT Services:
 1. <b>AWS IOT</b>: managed platform that allows IOT devices to communicate with cloud applications and other devices.
 2. <b>AWS FreeRTOS</b>: OS that allows low power and low cost devices to connect to AWS IOT
 3. <b>AWS GreenGrass</b>: allows AWS IOT connected devices to run AWS lambda, message caching and machine learning locally.
