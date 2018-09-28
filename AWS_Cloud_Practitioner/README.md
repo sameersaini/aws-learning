@@ -225,7 +225,16 @@ Inside a subnet, <b>Security groups</b> provides <b>level 1</b> security and def
 
 <b>Network ACL/NACL</b> inside a VPC provide <b>level 2</b> security of data going in/out of the subnet. They are stateless. So, both inbound and outbound rules are required to be specified.
 
+## Section 2: AWS Certified Associate Essentials 
 
+Elastic cloud compute (EC2) and Elastic Container service: (ECS):
 
+1. E22 cloud offers many variations such as general purpose, memory optimised, storage optimised, compute optimised etc.
+2. EC2 offers windows and linux AMIs.
+3. ECS is a container service for dockers containers. User can create an independent pipeline as: push code to git -> create a docker container -> push to Elastic container registry -> ECS then set ups container registries.
 
-
+Exercise 10:
+1. Setup a linux instance and allow traffic on port 80.
+2. Connect to the instance using SSH.
+3. Set up a nodeJs app on it.
+4. Start the server.
