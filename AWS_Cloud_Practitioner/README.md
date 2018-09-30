@@ -1,3 +1,5 @@
+# Section 1: AWS Cloud Practitioner 
+
 ## Intro to Storage Services
 
 1. <b>Simple Storage Service</b> : known as S3. To Store any type of data over the internet. User creates a bucket and upload content to that bucket. Its a flat storage. So, bucket names needs to be unique over the entires AWS accounts. 
@@ -212,7 +214,7 @@ S3 or simple storage service allows users to create buckets and store any kind o
 5. <b>AWS Elastic Cache</b>: It provides a in memory Storage service based on redis or memcached engine and can be used as a fast access point for most frequently used data in an application.
 
 
-##Working with VPC: Virtual private Cloud
+## Working with VPC: Virtual private Cloud
 
 When a new account is created AWS creates a default VPC for each availability zone. 
 By default a VPC contains a subnet per availability zone, one internet gateway and one route table entry for the internet gateway.
@@ -224,8 +226,3 @@ Each subnet needs to be connected to the internet gateway to be publicly visible
 Inside a subnet, <b>Security groups</b> provides <b>level 1</b> security and define which ports of the instances are open and which IPs can connect to the EC2 instances.
 
 <b>Network ACL/NACL</b> inside a VPC provide <b>level 2</b> security of data going in/out of the subnet. They are stateless. So, both inbound and outbound rules are required to be specified.
-
-
-
-
-
