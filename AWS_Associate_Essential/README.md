@@ -71,3 +71,57 @@
 3. Create DB endpoints in database migration service.
 4. Create Replication instance in database migration service and register DB endpoints created in the 3rd step.
 5. Create a migration task in database migration service and specify the source database and tables to migrate.
+
+
+## Amazon Dynamo DB:
+
+1. Managed NoSql service which stores data in JSON-like format. Consists of Tables, Items & Attributes. Optimised for Speed.
+2. Supports primary and secondary indexes.
+3. Supports cross-region replication. 
+4. Primary key can be a partition(hash) or partition and sort (hash and range).
+5. There can be max of 5 global secondary indexes and 5 local secondary indexes.
+6. Global Secondary index: Partition and Sort key are different than the primary key.
+7. Local Secondary index: Partition key is same as primary key, but Sort key is different from the primary key.
+8. 2 ways to search: 
+    1. Query: on a index. Fast
+    2. Scan is a full table/key scan. Slower. ConsistentRead set to true return results at the time of scan start.
+9. Updates:
+    1. Atomic Counter: every update increments or decrements the value of an attribute. Good for non-critical counter apps like site counter. Counter increments each time whether or not the call was successful.
+    2. Conditional Update: used for critical application. User can request the value of attribute after or before the update.
+10. Read Capacity: one read capacity unit represents one strongly consistent read per second or two eventually consistent read per second for 4KB of Item.
+11. Write capacity: one write capacity unit represents one write per second for 1 KB of item.
+12. Streams: Ordered flow of information about changes to Dynamo DB. 
+    1. Created when items are created, updated or deleted in the table
+    2. Assigned a sequence number
+    3. Stream Records are organised in groups called shards.
+    4. Stream records with in a shard are deleted every 24 hours.
+    5. Can be used to trigger a AWS Lambda function which can the be used to send mail, save data in S3 etc etc.
+
+## AWS Virtual Private Cloud:
+
+1. When a new account is created AWS creates a default VPC which spans each availability zone. 
+2. By default a VPC contains a subnet per availability zone, one internet gateway and one route table entry for the internet gateway.
+3. Following is the by default operation:
+    1. Each subnet needs to be connected to the internet gateway to be publicly visible on the internet. A entry of the internet gateway is required in route table and then the route is associated to the individual subnet in the subnet settings.
+4. Inside a subnet, Security groups provides level 1 security and define which ports of the instances are open and which IPs can connect to the EC2 instances. Security  groups are stateful i.e. they remember that return traffic is automatically allowed.
+5. Network ACL/NACL inside a VPC provide level 2 security of data going in/out of the subnet. They are stateless. So, both inbound and outbound rules are required to be specified.
+6. Default VPC is assigned a CIDR of 172.16.0.0/16. VPC can be between /28 and /16. Min is /28 i.e. 14 usable addresses.
+7. To change the size of a VPC, it must be terminated and recreated.
+8. 2 ways of connecting to a VPC:
+    1. Internet Gateway: Entry is required in routing table for a default internet gateway. Provides NAT for public IP addresses.
+    2. Virtual Private Gateway: VPG is at AWS end. User/client needs a physical device or a VPN software to connect. Each vpn connection has 2 vpn tunnels ie.e 2 public IP addresses to connect.
+9. Route Table: Automatically created at creation of a vpn and is associated to all the subnets unless another route table is explicitly connected to a subnet.
+    1. Has an entry of internet gate that allows the instances inside a subnet to connect to the internet/publicly via internet gateway.
+    2. Custom route table is also automatically created when a vpn is create using the vpn wizard.
+    3. A subnet is public if the associated route table has a entry of the internet gateway, else its private. Ex: RDS DB may have only private subnet and instances in the vpn can only connect privately to it.
+    4. Private subnet can connect to internet using a NAT gateway or a NAT instance. For ex: a RDS in private subnet may need to connect to internet for downloading updates.
+10. VPC Security:
+    1. Security groups: These are at instance level and is applied only to an instance is attached to. Level 1 of security. These are stateful. If there are more than one rule for a port number then the most permissive rule is applied.
+    2. NACL: :level 2 security of data going in/out of the subnet and thus are auto applied to all the instances in the subnet.. They are stateless. So, both inbound and outbound rules are required to be specified. Rules are processed in order and then most restrictive rule is applied. 
+
+#### Exercise 12:
+1. Create a custom VPC with a public and a private subnet.
+2. Launch a EC2 instance in the public subnet.
+3. Connect to the EC2 instance.
+4. Remove the default gateway from the route table associated to the public IP.
+5. Try to connect to the EC2 instance. Connection won’t succeed.
