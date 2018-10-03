@@ -255,3 +255,39 @@ Full documentation at [click here](http://cdn.backspace.academy/courses/aws-cert
 3. Create a AWS codePipeline and link the GitHub code to the pipeline.
 4. Then make changes in the code and push it to GitHub.
 5. Code pipeline will auto detect the changes and deploy it to the beanstalk app.
+
+## AWS Elastic Cache:
+1. ​Managed in-memory cache service.
+2. Provides key value stores of Redis or memcache.
+3. Reduces load on the database by proving fast access to cached data.
+4. Provides multi AZ capability.
+5. Memcached:
+    1. Used for simple data structures such as strings or objects upto 1MB.
+    2. Max vol can be 4.7 TB.
+    3. No persistence and lost data cannot be recovered.
+    4. Simple scaling by adding more nodes.
+6. Redis:
+    1. Support large number of data structures.
+    2. Object can be of 512 MB in size. Max vol can be 3.5 TB
+    3. Persistence store. Lost data can be recovered. There are a number of read replicas available. So there is high availability and failover capability.
+    4. Users can subscribe to a PUB/SUB channel.
+    5. Provides auto sorting of data.
+7. DB triggers can be used to update the elastic cache for any new data or new updates.
+8. Caching Strategies:
+    1. Lazy Loading:
+        1. Fetches data on a cache miss.
+        2. Requires TTL on stale data.
+        3. Con: requires 3 trips to fetch data on a miss.
+    2. Write thru:
+        1. Trigger updates the cache on db write.
+        2. Every data is cache so infrequent data is also cache.
+        3. TTL is also required here to remove stale data from cache
+9. TTL manual setting:
+    1. Memcached provides only seconds
+    2. Redis provides seconds and milliseconds.
+
+
+#### Exercise 15:
+1. Create a cloud former stack
+2. Use the cloud former stack to create a cloud formation template.
+3. Deploy the stack using the newly created template.
