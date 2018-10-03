@@ -230,3 +230,28 @@ Full documentation at [click here](http://cdn.backspace.academy/courses/aws-cert
 #### Exercise 13:
 1. Create a rest API and host it using API Gateway.
 2. Connect the API using a client.
+
+## AWS Cognito:
+
+1. Used to create user pools by providing sign up and sign up capabilities to the apps.
+2. Can authenticate uses with third party providers such as FB, google, etc and SAML 2.0 authentication to create federated Identity pools.
+3. After authenticating users, it can provide temp crews to the users and provide them with IAM roles which allow the users to access AWS services such as S3.
+4. Can handle hundred of millions of users.
+5. Can be used in modern server less apps.
+6. Sync key store: used as a temporary key value store to sync data between apps and aws.
+
+
+## AWS CodePipeline:
+1. Helps to create a CI/CD pipeline to build->test->deploy apps.
+2. Can look for changes in S3, GitHub, and AWS cloudFront.
+3. It links to GitHub using a web-hook.
+4. User can set up which branch look for.
+5. Then it can build, test and deploy apps.
+
+
+#### Exercise 14:
+1. Create a sample node app in AWS beanstalk.
+2. Upload the sample code in GitHub.
+3. Create a AWS codePipeline and link the GitHub code to the pipeline.
+4. Then make changes in the code and push it to GitHub.
+5. Code pipeline will auto detect the changes and deploy it to the beanstalk app.
