@@ -64,7 +64,7 @@
 8. Multiple read replicas cannot be put behind AWS ELB. Need to use Route 53 for each read replicas and use a routing policy or third party ELB such as HaProxy.
 
 
-### Exercise 11:
+#### Exercise 11:
 
 1. Create a MySql instance as a source and a PostgreSql instance as a target in RDS.
 2. Create database, tables and data in source instance.
@@ -125,3 +125,108 @@
 3. Connect to the EC2 instance.
 4. Remove the default gateway from the route table associated to the public IP.
 5. Try to connect to the EC2 instance. Connection won’t succeed.
+
+## AWS Simple Queue Service SQS:
+
+1. Used for queing messages.
+2. Act as a buffer of data for processing servers and helps to decouple applications from demand and smooths out the peak demand.
+3. Upto 10 attributes can be added in addition to message body.
+4. Message size can be from 1KB to 256 KB.
+5. A cloud watch alarm can be set to monitor the size of the queue and the alarm can be used to send message to auto scaling group to increase/decrease the number of processing servers when the demand is high or when the demand is low.
+6. 2 types:
+    1. Standard: Default queue type. Unlimited transactions per second and guarantees that message will be delivered but there can be duplicate messages.
+    2. FIFO: 300 transactions per second. No duplicates and proper FIFO ordering. Not available in all regions.
+7. Message LifeCycle: 
+    1. Message received by SQS.
+    2. Message delivered to processing server. Visibility timeout period starts.
+    3. Message processed by processing server. Visibility timeout period ends and the message is deleted from the queue.
+8. Visibility timeout period is the time duration for which the message is invisible in the queue and therefore, is not delivered to the processing server again or to other processing servers for processing.
+9. If the message is not deleted by the time visibility timeout period ends, the message again becomes visible and can be received again by the processing server.
+10. Dead Letter queues: To store messaged which were not processed successfully for analysing them later. Must be in the same region and same AWS account.
+11. Delay queue: Message delivery is delayed by a pre defined time period, which is configurable. 120,000 message is the max message per queue.
+12. Message Timers: Invisibility time period for the messages in the queue and cab be changed manually.
+13. Short Polling: SQS sends response to processing server even if no messages are in the queue. These are empty responses.
+14. Long Polling: SQS sends waits to send response to processing server until a message is there in the queue. This helps in saving empty responses.
+15. Response wait time can be configured to be between 1 to 20 secs.
+ 
+## Simple Notification Service:
+
+1. Used for sending notifications for mobile/web clients. Notifications can be push notifications or emails.
+2. Clients can be HTTP/HTTPs web client, Email client, SQS queue(only standard queue), Lambda functions, SMS or mobile push notifications.
+3. Messages can be 256 KB in size. 
+4. Topic names are unique and subscribers/clients listen to those topic names.
+5. Transport protocols can be HTTP, HTTPS, Email-JSON, SQS
+
+
+## Simple Workflow Service:
+
+1. Helps implement complex business processes by coordinating work across distributed application components. 
+2. Processes can be long running processes.
+3. Tasks are executed with no duplicates.
+4. It provides routing and queuing of tasks.
+5. Workflows can have child workflows.
+6. <b>Components</b>:
+    1. Workflow - It is the control flow logic i.e. the business process
+    2. Domain - It contains a single workflow or more than one workflow.
+    3. Tasks - The actual work to be performed in the workflow. This can be done by code, a web service etc. Tasks make up the workflow.
+    4. Actors - Interact directly with SWF to coordinate with Tasks.
+        1. Starters - Initiate the execution of workflow.
+        2. Decider - Implement workflow logic using activity workers.
+        3. Activity workers - Perform actual tasks of workflow.
+7. <b>Tasks</b>:
+    1. Must be registered using console or using SDK API
+    2. There can be a queue of task. Decision and activity tasks have a separate list.
+    3. Task routing can be used to assign a task to a particular activity worker.
+
+
+## Identity and Access Management: 
+Full documentation at [click here](http://cdn.backspace.academy/courses/aws-certification/02/100/distilled-02-10.pdf)
+
+#### IAM best practices:
+1. Enable MFA and reduce root access.
+2. Create an admin group and add IAM users with full privileges to that group, put those users on MFA and look the root account away.
+3. Grant least privileges.
+4. Create individual users and manage permissions with groups
+5. IAM roles for share access and for EC2 instances.
+6. Strong password policy, set a password expiration time and rotate the credentials regularly.
+7. More conditions can be used for added security.
+
+
+## Big Data Solutions Core Knowledge:
+1. <b>Redshift</b>: 
+    1. PetaByte Scale data warehousing Service based on Postgre SQL and can be accessed with standard BI tools.
+    2. Data is replicated between nodes on a cluster and is backed to S3 with snapshots.
+    3. User initiated snapshots are preserved even on cluster deletion.
+    4. Migration: AWS SnowBall is sent to AWS. AWS uploads the data to S3. AWS Data Pipeline then transfers data from S3 to RDS/Redshift/other destination.
+2. <b>Elastic Map Reduce</b>:
+    1. Fully managed Hadoop service
+    2. Provides clusters of Ec2 instances for the EMR jobs which are then deleted on job completion.
+    3. Supports Hadoop MapReduce and ApacheSpark.
+    4. Storage options: HDFS, EMRFS can access files on S3 
+3. <b>Elastic Search</b>:
+    1. Fully managed elastic search service.
+    2. Suitable for queuing and searching large volumes of data.
+    3. Can gather data from S3, Kenesis Streams, dynamoDb, cloud watch, cloud trail etc etc
+    4. Not suitable for OTLP and petabyte storages.
+4. <b>QuickSight</b>:
+    1. BI reporting service uses in memory engine
+    2. Cost is 1/10th of the traditional analytical s/w such as tableau.
+5. <b>Kinesis</b>:
+    1. Used for real time streaming data analytics.
+    2. Data can be put into streams using API calls, SDKs, Kinesis Agents etc etc.
+    3. Kinesis Client Library can be used to process data which is already in the stream.
+    4. Kinesis firehose can capture, load, transform the streaming data into kinesis analytics, AWS S3, AWS Redshift etc etc.
+    5. Not suitable for long term data storage.
+
+
+## AWS API Gateway:
+
+1. A simple, flexible, fully managed pay as u go service that handles all aspects of creating and operating robust APIs for application backends which may be running on AWS EC2/Lambda.
+2. Adds a son/swagger type definition to create APIs in the the API Gateway, then deploy the APIs.
+3. User can configure the throttling to define the number of hits allowed per second.
+4. A simple way to structure is: Route53 -> cloudFront -> API Gateway -> backend/AWS Lambda
+5. If it is a simple GET req without query params, then the req is handled by cloudFront, else it is passed to API gateway for further processing.
+
+#### Exercise 13:
+1. Create a rest API and host it using API Gateway.
+2. Connect the API using a client.
