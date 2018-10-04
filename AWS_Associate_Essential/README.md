@@ -299,3 +299,15 @@ Full documentation at [click here](http://cdn.backspace.academy/courses/aws-cert
 9. Launch the stack.
 10. Open the wordpress app in the browser.
 11. Terminate the stack.
+
+## AWS OpsWork:
+1. It is a configuration management platform for managing the AWS infra such as instances, dos etc etc.
+2. Much better than elastic beanstalk in control over the environment,
+3. Consists of CM model based on Stacks, Layers & Recipes.
+4. Stack consists of a set instances that the user want to manage. Eg: a web server stack may consists load balancer, EC2 server instances and database.
+5. Stack consists of one or more layer. Layers define how the instances are set up and configured.
+6. Stack must contain at least one layer.
+7. Layers must contain at least one instances.
+8. Instances can be member of multiple layer i.e. they can be reused.
+9. Provides manual scaling, time based scaling and load based scaling.
+10. Chef recipes are the code bases which can be used for customisation, redeployments, version control etc etc.
