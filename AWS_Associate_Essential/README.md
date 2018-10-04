@@ -288,6 +288,14 @@ Full documentation at [click here](http://cdn.backspace.academy/courses/aws-cert
 
 
 #### Exercise 15:
-1. Create a cloud former stack
-2. Use the cloud former stack to create a cloud formation template.
-3. Deploy the stack using the newly created template.
+1. Create a Vpn using cloudFormation designer.
+2. Add a subnet to the Vpn
+3. Add a internet gateway to the stack and then attach it to the vpn.
+4. Add a route table to the subnet and make.
+5. Add a route to the route table and make it dependent on the vpn, subnet and route table.
+6. Add a security group to the vpn.
+7. Add an EC2 t2.micro instance to the subnet and attach it to the Security group.
+8. Load a wordpress ami to the ec2 instance.
+9. Launch the stack.
+10. Open the wordpress app in the browser.
+11. Terminate the stack.
