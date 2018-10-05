@@ -64,7 +64,7 @@
 8. Multiple read replicas cannot be put behind AWS ELB. Need to use Route 53 for each read replicas and use a routing policy or third party ELB such as HaProxy.
 
 
-### Exercise 11:
+#### Exercise 11:
 
 1. Create a MySql instance as a source and a PostgreSql instance as a target in RDS.
 2. Create database, tables and data in source instance.
@@ -125,3 +125,189 @@
 3. Connect to the EC2 instance.
 4. Remove the default gateway from the route table associated to the public IP.
 5. Try to connect to the EC2 instance. Connection won’t succeed.
+
+## AWS Simple Queue Service SQS:
+
+1. Used for queing messages.
+2. Act as a buffer of data for processing servers and helps to decouple applications from demand and smooths out the peak demand.
+3. Upto 10 attributes can be added in addition to message body.
+4. Message size can be from 1KB to 256 KB.
+5. A cloud watch alarm can be set to monitor the size of the queue and the alarm can be used to send message to auto scaling group to increase/decrease the number of processing servers when the demand is high or when the demand is low.
+6. 2 types:
+    1. Standard: Default queue type. Unlimited transactions per second and guarantees that message will be delivered but there can be duplicate messages.
+    2. FIFO: 300 transactions per second. No duplicates and proper FIFO ordering. Not available in all regions.
+7. Message LifeCycle: 
+    1. Message received by SQS.
+    2. Message delivered to processing server. Visibility timeout period starts.
+    3. Message processed by processing server. Visibility timeout period ends and the message is deleted from the queue.
+8. Visibility timeout period is the time duration for which the message is invisible in the queue and therefore, is not delivered to the processing server again or to other processing servers for processing.
+9. If the message is not deleted by the time visibility timeout period ends, the message again becomes visible and can be received again by the processing server.
+10. Dead Letter queues: To store messaged which were not processed successfully for analysing them later. Must be in the same region and same AWS account.
+11. Delay queue: Message delivery is delayed by a pre defined time period, which is configurable. 120,000 message is the max message per queue.
+12. Message Timers: Invisibility time period for the messages in the queue and cab be changed manually.
+13. Short Polling: SQS sends response to processing server even if no messages are in the queue. These are empty responses.
+14. Long Polling: SQS sends waits to send response to processing server until a message is there in the queue. This helps in saving empty responses.
+15. Response wait time can be configured to be between 1 to 20 secs.
+ 
+## Simple Notification Service:
+
+1. Used for sending notifications for mobile/web clients. Notifications can be push notifications or emails.
+2. Clients can be HTTP/HTTPs web client, Email client, SQS queue(only standard queue), Lambda functions, SMS or mobile push notifications.
+3. Messages can be 256 KB in size. 
+4. Topic names are unique and subscribers/clients listen to those topic names.
+5. Transport protocols can be HTTP, HTTPS, Email-JSON, SQS
+
+
+## Simple Workflow Service:
+
+1. Helps implement complex business processes by coordinating work across distributed application components. 
+2. Processes can be long running processes.
+3. Tasks are executed with no duplicates.
+4. It provides routing and queuing of tasks.
+5. Workflows can have child workflows.
+6. <b>Components</b>:
+    1. Workflow - It is the control flow logic i.e. the business process
+    2. Domain - It contains a single workflow or more than one workflow.
+    3. Tasks - The actual work to be performed in the workflow. This can be done by code, a web service etc. Tasks make up the workflow.
+    4. Actors - Interact directly with SWF to coordinate with Tasks.
+        1. Starters - Initiate the execution of workflow.
+        2. Decider - Implement workflow logic using activity workers.
+        3. Activity workers - Perform actual tasks of workflow.
+7. <b>Tasks</b>:
+    1. Must be registered using console or using SDK API
+    2. There can be a queue of task. Decision and activity tasks have a separate list.
+    3. Task routing can be used to assign a task to a particular activity worker.
+
+
+## Identity and Access Management: 
+Full documentation at [click here](http://cdn.backspace.academy/courses/aws-certification/02/100/distilled-02-10.pdf)
+
+#### IAM best practices:
+1. Enable MFA and reduce root access.
+2. Create an admin group and add IAM users with full privileges to that group, put those users on MFA and look the root account away.
+3. Grant least privileges.
+4. Create individual users and manage permissions with groups
+5. IAM roles for share access and for EC2 instances.
+6. Strong password policy, set a password expiration time and rotate the credentials regularly.
+7. More conditions can be used for added security.
+
+
+## Big Data Solutions Core Knowledge:
+1. <b>Redshift</b>: 
+    1. PetaByte Scale data warehousing Service based on Postgre SQL and can be accessed with standard BI tools.
+    2. Data is replicated between nodes on a cluster and is backed to S3 with snapshots.
+    3. User initiated snapshots are preserved even on cluster deletion.
+    4. Migration: AWS SnowBall is sent to AWS. AWS uploads the data to S3. AWS Data Pipeline then transfers data from S3 to RDS/Redshift/other destination.
+2. <b>Elastic Map Reduce</b>:
+    1. Fully managed Hadoop service
+    2. Provides clusters of Ec2 instances for the EMR jobs which are then deleted on job completion.
+    3. Supports Hadoop MapReduce and ApacheSpark.
+    4. Storage options: HDFS, EMRFS can access files on S3 
+3. <b>Elastic Search</b>:
+    1. Fully managed elastic search service.
+    2. Suitable for queuing and searching large volumes of data.
+    3. Can gather data from S3, Kenesis Streams, dynamoDb, cloud watch, cloud trail etc etc
+    4. Not suitable for OTLP and petabyte storages.
+4. <b>QuickSight</b>:
+    1. BI reporting service uses in memory engine
+    2. Cost is 1/10th of the traditional analytical s/w such as tableau.
+5. <b>Kinesis</b>:
+    1. Used for real time streaming data analytics.
+    2. Data can be put into streams using API calls, SDKs, Kinesis Agents etc etc.
+    3. Kinesis Client Library can be used to process data which is already in the stream.
+    4. Kinesis firehose can capture, load, transform the streaming data into kinesis analytics, AWS S3, AWS Redshift etc etc.
+    5. Not suitable for long term data storage.
+
+
+## AWS API Gateway:
+
+1. A simple, flexible, fully managed pay as u go service that handles all aspects of creating and operating robust APIs for application backends which may be running on AWS EC2/Lambda.
+2. Adds a son/swagger type definition to create APIs in the the API Gateway, then deploy the APIs.
+3. User can configure the throttling to define the number of hits allowed per second.
+4. A simple way to structure is: Route53 -> cloudFront -> API Gateway -> backend/AWS Lambda
+5. If it is a simple GET req without query params, then the req is handled by cloudFront, else it is passed to API gateway for further processing.
+
+#### Exercise 13:
+1. Create a rest API and host it using API Gateway.
+2. Connect the API using a client.
+
+## AWS Cognito:
+
+1. Used to create user pools by providing sign up and sign up capabilities to the apps.
+2. Can authenticate uses with third party providers such as FB, google, etc and SAML 2.0 authentication to create federated Identity pools.
+3. After authenticating users, it can provide temp crews to the users and provide them with IAM roles which allow the users to access AWS services such as S3.
+4. Can handle hundred of millions of users.
+5. Can be used in modern server less apps.
+6. Sync key store: used as a temporary key value store to sync data between apps and aws.
+
+
+## AWS CodePipeline:
+1. Helps to create a CI/CD pipeline to build->test->deploy apps.
+2. Can look for changes in S3, GitHub, and AWS cloudFront.
+3. It links to GitHub using a web-hook.
+4. User can set up which branch look for.
+5. Then it can build, test and deploy apps.
+
+
+#### Exercise 14:
+1. Create a sample node app in AWS beanstalk.
+2. Upload the sample code in GitHub.
+3. Create a AWS codePipeline and link the GitHub code to the pipeline.
+4. Then make changes in the code and push it to GitHub.
+5. Code pipeline will auto detect the changes and deploy it to the beanstalk app.
+
+## AWS Elastic Cache:
+1. ​Managed in-memory cache service.
+2. Provides key value stores of Redis or memcache.
+3. Reduces load on the database by proving fast access to cached data.
+4. Provides multi AZ capability.
+5. Memcached:
+    1. Used for simple data structures such as strings or objects upto 1MB.
+    2. Max vol can be 4.7 TB.
+    3. No persistence and lost data cannot be recovered.
+    4. Simple scaling by adding more nodes.
+6. Redis:
+    1. Support large number of data structures.
+    2. Object can be of 512 MB in size. Max vol can be 3.5 TB
+    3. Persistence store. Lost data can be recovered. There are a number of read replicas available. So there is high availability and failover capability.
+    4. Users can subscribe to a PUB/SUB channel.
+    5. Provides auto sorting of data.
+7. DB triggers can be used to update the elastic cache for any new data or new updates.
+8. Caching Strategies:
+    1. Lazy Loading:
+        1. Fetches data on a cache miss.
+        2. Requires TTL on stale data.
+        3. Con: requires 3 trips to fetch data on a miss.
+    2. Write thru:
+        1. Trigger updates the cache on db write.
+        2. Every data is cache so infrequent data is also cache.
+        3. TTL is also required here to remove stale data from cache
+9. TTL manual setting:
+    1. Memcached provides only seconds
+    2. Redis provides seconds and milliseconds.
+
+
+#### Exercise 15:
+1. Create a Vpn using cloudFormation designer.
+2. Add a subnet to the Vpn
+3. Add a internet gateway to the stack and then attach it to the vpn.
+4. Add a route table to the subnet and make.
+5. Add a route to the route table and make it dependent on the vpn, subnet and route table.
+6. Add a security group to the vpn.
+7. Add an EC2 t2.micro instance to the subnet and attach it to the Security group.
+8. Load a wordpress ami to the ec2 instance.
+9. Launch the stack.
+10. Open the wordpress app in the browser.
+11. Terminate the stack.
+
+## AWS OpsWork:
+1. It is a configuration management platform for managing the AWS infra such as instances, dos etc etc.
+2. Much better than elastic beanstalk in control over the environment,
+3. Consists of CM model based on Stacks, Layers & Recipes.
+4. Stack consists of a set instances that the user want to manage. Eg: a web server stack may consists load balancer, EC2 server instances and database.
+5. Stack consists of one or more layer. Layers define how the instances are set up and configured.
+6. Stack must contain at least one layer.
+7. Layers must contain at least one instances.
+8. Instances can be member of multiple layer i.e. they can be reused.
+9. Provides manual scaling, time based scaling and load based scaling.
+10. Chef recipes are the code bases which can be used for customisation, redeployments, version control etc etc.
