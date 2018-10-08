@@ -16,3 +16,13 @@
 3. Launch an EC2 instance using the custom nodeJs AMI.
 4. Connect to the instance using SSH.
 5. Run the nodeJs app on the instance.
+
+### Exercise 18: 
+
+1. Create Cognito User Pool using AWS Cognito.
+2. Attach a new app to the Cognito user pool.
+3. Create federated identity pool related to the the user pool.
+4. Upload a static website(provided in the lab) to a new amazon S3 bucket.
+5. Make the bucket public and host a static website on it.
+6. Make changes to app.js to enable User Sign up on the website using the AWS Javascript SDK Cognito Service.
+7. Add feature to Sign In and Logout using the AWS Cognito.
