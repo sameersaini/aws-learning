@@ -39,3 +39,15 @@
 8. Open the app in browser and login with amazon.
 9. Click “write to dynamo db” to same user login response info to dynamo db.
 10. Finally, clean the env.
+
+#### Exercise 20: Working with DynamoDb using nodeJs aws-sdk
+
+1. Create a table in AWS DynamoDB and create primary and secondary indexes.
+2. Add a record in the table.
+3. Upload to a Json file, containing records to be uploaded to the newly create table , to an AWS S3 bucket.
+4. Create a AWS Cloud 9 environment.
+5. Nam install aws-sdk.
+6. Using the aws-sdk, find the available tables.
+7. Get the uploaded file object from S3 and import it to DynamoDb table.
+8. Write and execute a search query using the aws-sdk.
+9. Remove the DynamoDb table and clean the rest of the created resources.
