@@ -55,10 +55,20 @@
 
 #### Exercise 21: Working with redis in AWS Elastic Cache from AWS js SDK.
 
-1. Set up. Cloud 9 development environment.
+1. Set up. Cloud 9 development environment and install the redis npm package.
 2. Create a new security group and select inward traffic at port 6379 from source security group of the cloud9 env. 
 3. Create a new subnet group in the elastic cache dashboard.
 4. Launch and Elastic cache cluster based on redis in the created security group and subnet group.
 5. Connect to created elasticCache redis end-point using nodeJs.
 6. Write and read keys to the redis cluster.
+7. Clean the environment.
+
+#### Exercise 22: Working with AWS Lambda for server less apps.
+
+1. Set up a basic nodeJS code in AWS lambda and run it using console.
+2. Create two buckets in AWS S3 and upload high quality images to one of the bucket.
+3. Upload code to AWS lambda to create thumbnails using imagemagik nam package.
+4. Create lambda trigger in the bucket containing high quality images to trigger newly created aws lambda function on new image upload.
+5. Upload a new new image to the bucket which will trigger the lambda function.
+6. The resulting thumbnail will be present in the 2nd bucket.
 7. Clean the environment.
