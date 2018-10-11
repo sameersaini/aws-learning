@@ -51,3 +51,14 @@
 7. Get the uploaded file object from S3 and import it to DynamoDb table.
 8. Write and execute a search query using the aws-sdk.
 9. Remove the DynamoDb table and clean the rest of the created resources.
+
+
+#### Exercise 21: Working with redis in AWS Elastic Cache from AWS js SDK.
+
+1. Set up. Cloud 9 development environment.
+2. Create a new security group and select inward traffic at port 6379 from source security group of the cloud9 env. 
+3. Create a new subnet group in the elastic cache dashboard.
+4. Launch and Elastic cache cluster based on redis in the created security group and subnet group.
+5. Connect to created elasticCache redis end-point using nodeJs.
+6. Write and read keys to the redis cluster.
+7. Clean the environment.
