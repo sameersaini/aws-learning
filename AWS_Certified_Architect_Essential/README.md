@@ -58,3 +58,21 @@
     2. <b>Step Scaling</b>: 
         1. Different scaling conditions can be set up for different bands of conditions.
         2. Example: increase capacity by 25 % over desired capacity for cpu utilisation between 25-50% and increase capacity by 100% over desired capacity for cpu utilisation between 50-75% 
+        
+        
+## Exercise 24: High Availability and Fault Tolerant Architecture
+
+<b>Part One:</b> Setup a VPC containing public and private subnets along with a NAT instance in public subnet
+1. Create a new VPC with a public and private subnet in availability zone us-east-1a
+2. Select a NAT instance in the Public subnet.
+3. Go through and analyse the subnets and their associations with the route tables.
+4. NAT instance is a EC2 instance which uses an open security group, so we need to modify its security group.
+
+<b>Part Two:</b> Create a new security group with required rules only.
+1. Change the ENI(elastic network interface) settings so that it don’t gets deleted on Instance termination.
+2. Terminate the EC2 NAT instance.
+3. ENI is not available to be attached to a new instance.
+4. Create anew security group with tighter rules.
+5. Attach the newly create SG to the ENI.
+6. Launch a new EC2 NAT instance using the current ENI and the newly created SG.
+7. Now, the newly created VPC will be using a NAT instance with tighter security.
