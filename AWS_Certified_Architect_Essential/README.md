@@ -76,3 +76,10 @@
 5. Attach the newly create SG to the ENI.
 6. Launch a new EC2 NAT instance using the current ENI and the newly created SG.
 7. Now, the newly created VPC will be using a NAT instance with tighter security.
+
+<b>Part Three:</b> Creating Public and Private subnets in a different AZ:
+1. Create a public and private subnet in a different AZ us-east-1b
+2. By default, the subnets are private. Therefore, associate them with proper route table so that one is public and the other is private.
+3. Create two new NACL. One for private subnets and other for public subnets.
+4. Add proper inbound and outbound rules for the NACLs.
+5. Associate the 2 public subnets with the Public NACL and 2 private subnets with the Private NACL.
