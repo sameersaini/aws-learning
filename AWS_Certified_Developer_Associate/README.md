@@ -1,6 +1,6 @@
 # Section 3: AWS Certified Developer Associate
 
-### Exercise 16: Working with AWS Cloud9
+#### Exercise 16: Working with AWS Cloud9
 
 1. Setup AWS cloud 9 IDE.
 2. Check various settings of the IDE.
@@ -9,7 +9,7 @@
 5. Run the app.
 6. Clean the environment by deleting the IDE.
 
-### Exercise 17: NodeJs Development on EC2
+#### Exercise 17: NodeJs Development on EC2
 
 1. Create a IAM role with administrative access
 2. Create a Security group for HTTP, HTTPS, SSH inward traffic.
@@ -17,7 +17,7 @@
 4. Connect to the instance using SSH.
 5. Run the nodeJs app on the instance.
 
-### Exercise 18: 
+#### Exercise 18: 
 
 1. Create Cognito User Pool using AWS Cognito.
 2. Attach a new app to the Cognito user pool.

@@ -1,6 +1,6 @@
 # Section 4: AWS Certified Architect  Essentials
 
-## Exercise 23: NodeJs Development on EC2
+#### Exercise 23: NodeJs Development on EC2
 
 1. Create a IAM role with administrative access
 2. Create a Security group for HTTP, HTTPS, SSH inward traffic.
@@ -60,7 +60,7 @@
         2. Example: increase capacity by 25 % over desired capacity for cpu utilisation between 25-50% and increase capacity by 100% over desired capacity for cpu utilisation between 50-75% 
         
         
-## Exercise 24: High Availability and Fault Tolerant Architecture
+#### Exercise 24: High Availability and Fault Tolerant Architecture
 
 <b>Part One:</b> Setup a VPC containing public and private subnets along with a NAT instance in public subnet
 1. Create a new VPC with a public and private subnet in availability zone us-east-1a
@@ -104,3 +104,14 @@
 4. Create a RED DB subnet to accept traffic from with the subnets
 5. Launch a production grade RDS instance into the new VPC that we are working with. Do not create public end-points.
 6. Create a read replica replica in a different AZ.
+
+#### Exercise 25: Application Load Balancers
+
+1. Launch a Magento AMI app instance.
+2. Launch a Wordpress AMI app instance.
+3. Launch a target group for each of the instances and add these instances to the target group.
+4. Got to Load balancers page and create a new load balancer. Select application load balancer.
+5. Select the by default target group to be Wordpress and create the load balancer.
+6. After create. Edit the target rules to include magento target group on /store and /store/*.
+7. Save the rules.
+8. Now, by default the load balancer will direct traffic to Wordpress app in Wordpress target group and to magento app in magento target group when /store or /store/* hit is received.
