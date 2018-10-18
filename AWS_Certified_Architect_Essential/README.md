@@ -83,3 +83,24 @@
 3. Create two new NACL. One for private subnets and other for public subnets.
 4. Add proper inbound and outbound rules for the NACLs.
 5. Associate the 2 public subnets with the Public NACL and 2 private subnets with the Private NACL.
+
+<b>Part Four:</b> Creating an ELB and Auto Scaling Group
+1. Create a WebServer SG with inbound rules allowing HTPP, HTTPS, SSH from anywhere and all traffic from with the SG. This SG will be used to launch ELB, ASG, and EC2 instances.
+2. Go to EC2 dashboard and create a load balancer in the newly created VPC. Add 2 public subnets to the load balancer
+3. Select the WebServer SG for the load balancer.
+4. Put the health check to TCP: port 80 and create the load balancer.
+5. After create, enable sticky sessions to preserve the temp session data with the instance.
+6. Go to Launch configuration in the EC2 instance and create a launch configuration of a Wordpress AMI in the newly create WebServer SG.
+7. The go to Auto Scaling Group and use the launch configuration to launch minimum of 2 instances in the 2 public subnets created in part one and two.
+8. Select the load balancer created in the previous steps for health checks.
+9. Use the auto scaling policies of increase and decrease according to you need.
+10. Two instances will be launch in 2 different AZ. And if you terminate any one of then, one more will be launched after the cool down period to maintain a min of 2 instances.
+
+
+<b>Part Five:</b> Adding a Multi AZ RDS instance and Read replica
+1. Create a security group for RDS DB.
+2. Add a inbound rule for web server security group so that instances in that group can connect to database
+3. Add outbound rule to web server security group so that that requests can be made from within web server SG to the db SG.
+4. Create a RED DB subnet to accept traffic from with the subnets
+5. Launch a production grade RDS instance into the new VPC that we are working with. Do not create public end-points.
+6. Create a read replica replica in a different AZ.
