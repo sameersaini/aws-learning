@@ -115,3 +115,11 @@
 6. After create. Edit the target rules to include magento target group on /store and /store/*.
 7. Save the rules.
 8. Now, by default the load balancer will direct traffic to Wordpress app in Wordpress target group and to magento app in magento target group when /store or /store/* hit is received.
+
+#### Exercise 26: Network Load Balancers
+
+1. Create a Target group for TCP on port 80.
+2. Create a launch configuration of Wordpress app.
+3. Use the launch configuration to create an auto scaling group and set the traffic to ELB and use the target group just created.
+4. Create a Network load balancer and attach the target group to it.
+5. Clean the Environment.
