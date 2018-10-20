@@ -123,3 +123,23 @@
 3. Use the launch configuration to create an auto scaling group and set the traffic to ELB and use the target group just created.
 4. Create a Network load balancer and attach the target group to it.
 5. Clean the Environment.
+
+#### Exercise 27: Elastic Cache 
+
+1. Create a Security group for Ec2 instance with inward traffic from port 22 for SSH.
+2. Create a Security group for redis cluster with inward traffic on port 6379 from the EC2 security group.
+3. Create a subnet group in elastic cache.
+4. Create a redis cluster in elastic cache using the redis security group and subnet group.
+5. Connect to EC2 instance using ssh and then connect to the redis server.
+6. SET some key in redis with expiry time and the GET the same key.
+7. After expiry time the GET will result in null value.
+8. Clean the environment.
+
+#### Exercise 28: AWS Key Management Service.
+
+1. In IAM panel, go to encryption keys and create an encryption key.
+2. Create a S3 bucket and set the default encryption ket as the newly created key.
+3. Upload a file to the bucket and set the encryption to NONE.
+4. Event then, the default encryption will be applied to the file.
+5. When we download the file, S3 decrypts it for us and then file is downloaded.
+6. Put a delete request to delete the Key after 7 days.
