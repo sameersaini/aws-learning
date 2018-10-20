@@ -1,6 +1,6 @@
 # Section 4: AWS Certified Architect  Essentials
 
-## Exercise 23: NodeJs Development on EC2
+#### Exercise 23: NodeJs Development on EC2
 
 1. Create a IAM role with administrative access
 2. Create a Security group for HTTP, HTTPS, SSH inward traffic.
@@ -60,7 +60,7 @@
         2. Example: increase capacity by 25 % over desired capacity for cpu utilisation between 25-50% and increase capacity by 100% over desired capacity for cpu utilisation between 50-75% 
         
         
-## Exercise 24: High Availability and Fault Tolerant Architecture
+#### Exercise 24: High Availability and Fault Tolerant Architecture
 
 <b>Part One:</b> Setup a VPC containing public and private subnets along with a NAT instance in public subnet
 1. Create a new VPC with a public and private subnet in availability zone us-east-1a
@@ -104,3 +104,42 @@
 4. Create a RED DB subnet to accept traffic from with the subnets
 5. Launch a production grade RDS instance into the new VPC that we are working with. Do not create public end-points.
 6. Create a read replica replica in a different AZ.
+
+#### Exercise 25: Application Load Balancers
+
+1. Launch a Magento AMI app instance.
+2. Launch a Wordpress AMI app instance.
+3. Launch a target group for each of the instances and add these instances to the target group.
+4. Got to Load balancers page and create a new load balancer. Select application load balancer.
+5. Select the by default target group to be Wordpress and create the load balancer.
+6. After create. Edit the target rules to include magento target group on /store and /store/*.
+7. Save the rules.
+8. Now, by default the load balancer will direct traffic to Wordpress app in Wordpress target group and to magento app in magento target group when /store or /store/* hit is received.
+
+#### Exercise 26: Network Load Balancers
+
+1. Create a Target group for TCP on port 80.
+2. Create a launch configuration of Wordpress app.
+3. Use the launch configuration to create an auto scaling group and set the traffic to ELB and use the target group just created.
+4. Create a Network load balancer and attach the target group to it.
+5. Clean the Environment.
+
+#### Exercise 27: Elastic Cache 
+
+1. Create a Security group for Ec2 instance with inward traffic from port 22 for SSH.
+2. Create a Security group for redis cluster with inward traffic on port 6379 from the EC2 security group.
+3. Create a subnet group in elastic cache.
+4. Create a redis cluster in elastic cache using the redis security group and subnet group.
+5. Connect to EC2 instance using ssh and then connect to the redis server.
+6. SET some key in redis with expiry time and the GET the same key.
+7. After expiry time the GET will result in null value.
+8. Clean the environment.
+
+#### Exercise 28: AWS Key Management Service.
+
+1. In IAM panel, go to encryption keys and create an encryption key.
+2. Create a S3 bucket and set the default encryption ket as the newly created key.
+3. Upload a file to the bucket and set the encryption to NONE.
+4. Event then, the default encryption will be applied to the file.
+5. When we download the file, S3 decrypts it for us and then file is downloaded.
+6. Put a delete request to delete the Key after 7 days.

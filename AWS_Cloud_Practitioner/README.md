@@ -9,7 +9,7 @@
 5. <b>Storage Gateway</b>: Allows to connect on premise storage to AWS cloud. Ex: AWS Storage gateway can be used to transfer in-house data to AWS S3.
 6. <b>AWS Snowball</b>: Physical device used to transfer large TB to PB of data from your own data source to AWS cloud. 
 
-##### Exercise 1: working with S3
+#### Exercise 1: working with S3
 1. Create a bucket.
 2. Create a folder inside a bucket.
 3. Upload files to a folder inside a bucket.
@@ -26,7 +26,7 @@
 5. <b>Database Migration Service</b>: to migrate from one DB engine to another. Ex: oracle -> mysql 
 6. <b>Neptune</b>: fast and fully managed graph database service. Very effective graph storage.
 
-##### Exercise 2: 
+#### Exercise 2: 
 1. Create a mySql RDS instance.
 2. Connect to tha instance using mysql workbench.
 3. Create a database in the instance.
@@ -49,7 +49,7 @@
 
     NOTE: using amazon Cloud Front in front of (Auto scale + ELB) helps fast access of static content and makes sure dynamic content is also delivered via ELB.
     
-##### Exercise 3:
+#### Exercise 3:
 1. Launch a EC2 server using Wordpress AMI by bitnami.
 2. Set a public IP
 3. Launch the wordpress application.
@@ -65,7 +65,7 @@
 6. <b>AWS config</b>: allows user to evaluate and set up configuration for the AWS resources which helps to simplify change management, troubleshooting etc.
 7. <b>AWS trusted advisor</b>: online expert system to analyse your current AWS resources and set up and give expert advise on how to maximise the potential and throughput of your AWS resources.
 
-##### Exercise 4:
+#### Exercise 4:
 1. Add a billing alarm using cloud watch.
 
 ## Intro to Application Services
@@ -77,7 +77,7 @@
 6. <b>Amazon SES</b>: Simple email service is used to send emails/bulk emails to users. To send bulk emails, user needs to request limit increase.
 
 
-##### Exercise 5:
+#### Exercise 5:
 1. Use SES to send email to a user.
 
 ## Intro to Analytics and Machine Learning:
@@ -93,7 +93,7 @@
 10. <b>Amazon Translate</b>: translates text to other languages.
 11. <b>Amazon Transcribe</b>: speech recognition service used for speech to text conversion 
 
-##### Exercise 6:
+#### Exercise 6:
 1. Use Amazon Recognition to analyse images and videos.
 
 ## Intro to Security, Identity & Compliance:
@@ -111,7 +111,7 @@
 11. <b>Amazon WAF</b>: web application fireball: sits in front of web site. Provides protection against common attacks such as SQL injection, cross site scripting. Rules can be set in fireball for different applications.
 
 
-##### Exercise 7:
+#### Exercise 7:
 1. Create a IAM user
 2. Set policies on IAM ser
 3. Login with IAM user.
@@ -164,7 +164,7 @@
 4. User can select the technology to be used for the app.
 5. It makes the infra deployment and management very easy.
 
-##### Exercise 8:
+#### Exercise 8:
 1. Create a high availability nodeJs app using Elastic Beanstalk, which uses auto scaling and load balancing.
 2. Open it in the Browser.
 3. Terminate the app.
@@ -187,7 +187,7 @@ IAM is a web service that enables Amazon Web Services (AWS) customers to manage 
 10. Remove <b>Obsolete</b> credentials.
 11. <b>Monitor</b> activity of your account using AWS CloudTrail.
 
-##### Exercise 9: Working with IAM
+#### Exercise 9: Working with IAM
 
 1. Create a IAM User.
 2. Attach a policy.
