@@ -10,5 +10,4 @@ Course being followed is [Amazon Web Services Certified 2018](https://www.udemy.
 2. AWS Certified Associate Essentials
 3. AWS Certified Developer Associate - Final Preparation
 4. AWS Certified Architect/Sysops Essentials
-5. AWS Certitifed Solutions Architect Essentials - Final Preparation
-6. AWS Certified SysOps Administrator Associate - Final Preparation
+5. AWS Certified SysOps Administrator Associate - Final Preparation
