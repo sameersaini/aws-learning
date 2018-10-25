@@ -102,7 +102,33 @@
 5. Add a cron job to send metrics data to CloudWatch every 60 secs.
 6. Check the monitoring data in CloudWatch.
 
+## Monitoring RDS:
+1. Monitoring Options:
+    1. CloudWatch Alarms, Logs or Events.
+    2. Enhanced Monitoring - provide OS metrics. Only present in RDS service.
+    3. RDS Events 
+    4. Database log files.
+    5. Amazon performance insights.
+    6. Monitor CloudTrail logs 
+2. Enhanced Monitoring
+    1. Provides real time OS metrics.
+    2. Can be views in the console or CloudWatch Logs.
+    3. Not available for t1.micro or m1.small
+    4. Cost varies on the instance size.
+3. RDS Events:
+    1. Can be used to trigger SNS notification service.
+    2. Multiple event types such as backup, creation, deletion, low storage, high load etc.
+    3. Can be viewed using CLI, SDK/API, RDS Console.
+4. DB Log files: 
+    1. Type of log files available depends on the type of DB engine used.
+    2. Transaction logs not supported. Only general logs.
 
+#### Exercise 32: Monitoring RDS.
+1. Launch a RDS instance.
+2. Monitor CloudWatch metrics.
+3. Monitor Enhanced metrics.
+4. Monitor OS events.
+5. Monitor DB logs.
 
 
 
