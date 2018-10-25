@@ -67,11 +67,40 @@
 8. When lag has been reduced to a satisfying number, then again change the parameter group to default parameter group.
 
 
+## Monitoring EC2 & ELB
+
+1. <b>Standard CloudWatch Metrics</b>:
+    1. T2 CPU Credit such as CPUCreditUsage and CPUCreditBalance
+    2. Metrics can be on cpu utilisation, disk IO and network IO.
+    3. Detailed monitoring can be enabled.
+2. <b>Custom Metrics</b>:
+    1. Can be created and published to cloud watch.
+    2. Resolution can be 1 min or 1 sec.
+    3. Perl Monitoring script can be used to collect memory, disk and cpu utilisation data.
+    4. Aggregation can be used such as min, max, sum, average, and percentile.
+3. <b>EC2 CloudWatch Alarm Actions</b>:
+    1. Can be used to reboot, stop or terminate instances based on the alarms
+    2. Can be created using EC2 or CloudWatch console.
+    3. Use case can be stopping an idle instance.
+    4. Reboot an instance having a lot of memory leaks.
+    5. Terminate when a batch job has finished.
+4. <b>ELB monitoring</b>:
+    1. ELB sends the CloudWatch metric data every 60 secs.
+    2. ELB publishes a log file to S3 every 5 to 60 secs which has the access logs.
+    3. Application ELB provides a tracking feature to track HTTP reqs from clients to targets or other services.
+    4. Adds/updates a header to the HTTP req.
+    5. AWS CloudTrail can be used to monitor the api calls. 
 
 
 
+#### Exercise 31: Implement EC2 monitoring scripts.
 
-
+1. Create a IAM policy that to allow put, get list on CloudWatch metrics.
+2. Attach that policy to a EC2 IAM role.
+3. Create an EC2 instance and attach the newly created role to it and add run scripts to install perl.
+4. SSH the EC2 instance and run the required perl scripts to send the metrics data to CloudWatch.
+5. Add a cron job to send metrics data to CloudWatch every 60 secs.
+6. Check the monitoring data in CloudWatch.
 
 
 
